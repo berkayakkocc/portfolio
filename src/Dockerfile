@@ -1,5 +1,5 @@
-# Use the official .NET 9.0 SDK image for building
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+# Use the official .NET 6.0 SDK image for building
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
 # Set the working directory
 WORKDIR /src
@@ -25,8 +25,8 @@ RUN dotnet build --configuration Release --no-restore
 # Publish the application
 RUN dotnet publish src/Backend/Portfolio.API/Portfolio.API.csproj --configuration Release --no-build --output /app/publish
 
-# Use the official .NET 9.0 runtime image for running
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+# Use the official .NET 6.0 runtime image for running
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 
 # Set the working directory
 WORKDIR /app
