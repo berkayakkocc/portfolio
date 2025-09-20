@@ -59,6 +59,7 @@ const Skills: React.FC = () => {
     return acc;
   }, {} as Record<string, Skill[]>);
 
+
   // Kategori renklerini belirle
   const getCategoryColors = (category: string) => {
     const colorMap: Record<string, { accent: string; background: string; dot: string }> = {
@@ -75,20 +76,19 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-16 md:py-24 bg-white mt-16 md:mt-24">
+    <section id="skills" className="bg-white" style={{ paddingTop: '50px', paddingBottom: '150px' }}>
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }} className="text-center">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <div className="text-center" style={{ marginBottom: '40px' }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
               Yeteneklerim
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(skillCategories).map(([category, categorySkills]) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ justifyContent: 'center' }}>
+            {Object.entries(skillCategories).map(([category, categorySkills], index) => {
               const colors = getCategoryColors(category);
               
               return (
@@ -100,16 +100,18 @@ const Skills: React.FC = () => {
                   <div className={`${colors.accent} h-1 w-full`}></div>
                   
                   {/* Card Content */}
-                  <div className="p-4">
-                    <h4 className="text-xl font-bold text-gray-900 mb-2 flex items-center group-hover:text-blue-600 transition-colors duration-300">
-                      <div className={`w-3 h-3 ${colors.dot} rounded-full mr-3 group-hover:scale-110 transition-transform duration-300`}></div>
+                  <div className="p-4" style={{ textAlign: 'center', paddingTop: '20px', paddingBottom: '40px' }}>
+                    <h4 className="text-xl font-bold text-gray-900 flex items-center justify-center group-hover:text-blue-600 transition-colors duration-300" style={{ marginBottom: '40px' }}>
+                      <div className={`w-3 h-3 ${colors.dot} rounded-full group-hover:scale-110 transition-transform duration-300`} style={{ marginRight: '10px' }}></div>
                       {category}
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    
+                    <div className="flex flex-wrap gap-2" style={{ justifyContent: 'center' }}>
                       {categorySkills.map((skill) => (
                         <span
                           key={skill.id}
-                          className="inline-flex px-3 py-2 bg-white text-gray-700 rounded-full text-sm font-medium border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:scale-105 transition-all duration-200 cursor-default shadow-sm"
+                          className="inline-flex bg-white text-gray-700 rounded-full text-sm font-medium border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:scale-105 transition-all duration-200 cursor-default shadow-sm"
+                          style={{ paddingLeft: '30px', paddingRight: '30px', paddingTop: '14px', paddingBottom: '14px' }}
                         >
                           {skill.name}
                         </span>
